@@ -836,6 +836,8 @@
     <Compile Include="AspNet.System.Net\System.Net.WebRequest\WebRequest.GetResponseSafe.cs" />
     <Compile Include="AspNet.System.Net\System.Net.WebResponse\WebResponse.ReadToEnd.cs" />
     <Compile Include="AspNet.System.Net\System.Net.WebResponse\WebResponse.ReadToEndAndDispose.cs" />
+    <Compile Include="AspNet.System.Reflection\FastReflection\Emit\DynamicMethodEmit.cs" />
+    <Compile Include="AspNet.System.Reflection\FastReflection\Emit\ReflectionExtensions.cs" />
     <Compile Include="AspNet.System.Reflection\GetDeclaration\ConstructorInfo.GetDeclaration.cs" />
     <Compile Include="AspNet.System.Reflection\GetDeclaration\EvenInfo.GetDeclaration.cs" />
     <Compile Include="AspNet.System.Reflection\GetDeclaration\FieldInfo.GetDeclaration.cs" />
@@ -934,6 +936,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AspNet.System.Xml.Linq\System.Xml.Linq.XElement\" />
+    <Folder Include="Helper\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
