@@ -17,7 +17,7 @@ public static partial class Extensions
     /// <typeparam name="T">Generic type parameter.</typeparam>
     /// <param name="this">The @this to act on.</param>
     /// <returns>@this as an IEnumerable&lt;T&gt;</returns>
-    public static IEnumerable<T> ToEntities<T>(this DataTable @this) where T : new()
+    public static IEnumerable<T> ToEntities<T>(this DataTable @this,bool userEmit) where T : new()
     {
         Type type = typeof (T);
         PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
@@ -34,7 +34,10 @@ public static partial class Extensions
                 if (@this.Columns.Contains(property.Name))
                 {
                     Type valueType = property.PropertyType;
-                    property.SetValue(entity, dr[property.Name].To(valueType), null);
+                    if (userEmit)
+                        property.FastSetValue(entity, dr[property.Name].To(valueType));
+                    else
+                        property.SetValue(entity, dr[property.Name].To(valueType), null);
                 }
             }
 
@@ -43,7 +46,10 @@ public static partial class Extensions
                 if (@this.Columns.Contains(field.Name))
                 {
                     Type valueType = field.FieldType;
-                    field.SetValue(entity, dr[field.Name].To(valueType));
+                    if (userEmit)
+                        field.FastSetField(entity, dr[field.Name].To(valueType));
+                    else
+                        field.SetValue(entity, dr[field.Name].To(valueType));
                 }
             }
 
