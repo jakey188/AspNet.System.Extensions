@@ -18,7 +18,7 @@ namespace ConsoleApplication1
             ReflectionToList(dt,row);
             EmitToList(dt,row);
 
-            int row1 = 200;
+            int row1 = 200000;
             var dt1 = CrateDataTable(row1);
             ReflectionToList(dt1,row1);
             EmitToList(dt1,row1);
